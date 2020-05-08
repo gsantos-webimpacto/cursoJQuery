@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Objetos 101</title>
+
+	<!-- Importacion del jQuery -->
+	<script src="js/lib/jquery-2.1.4.min.js"></script>
+	
+	<!-- Importacion del Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+
+<div class="container text-center">
+	
+	<h1>Objetos 101: <small>Comprendiendo lo básico</small></h1>
+	<hr>
+	
+	<button id="btnEncender" class="btn btn-primary">Encender</button>
+	<button id="btnApagar" class="btn btn-primary">Apagar</button>
+
+	<script>
+		var coche= {
+			encendido: false,
+			llantas:4,
+			puertas:5,
+			fabricante:{
+					creador:"Toyota",
+					telefono:"555-555555",
+					direccion:"Hola 1223 avenida 123"
+				},
+			colores: ["Azul","Blanco","Rojo","Negro"],
+			arrancar:function(){
+				if(coche.encendido){
+					console.log("El vehiculo estaba encendido.");
+				}else{
+					console.log("Encendiendo motor.");
+					coche.encendido = true;
+				}
+			},
+			apagar:function(){
+				if(!coche.encendido){
+					console.log("El vehiculo estaba apagado.");
+				}else{
+					console.log("Apagando motor.");
+					coche.encendido = false;
+				}
+			},
+		};
+		$("#btnEncender").on("click",function(){
+			coche.arrancar();
+		});
+
+		$("#btnApagar").on("click",function(){
+			coche.apagar();
+		});
+
+	</script>
+
+
+</div>
+
+
+
+
+
+
+</body>
+</html>

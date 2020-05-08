@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Presentacion de Vehículo</title>
+
+	<!-- Importacion del jQuery -->
+	<script src="js/lib/jquery-2.1.4.min.js"></script>
+	
+	<!-- Importacion del Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+
+<div class="container text-center">
+	
+	<h1>Objetos Prácticos: <small>Ejemplo de vehículo</small></h1>
+	<hr>
+	
+
+	
+	<div class="divPreloader">
+		<img src="img/loading.gif" class="imgLoader img-responsive">
+	</div> 
+	
+	
+	<div class="divVistaPrevia">
+		<img id="imgCoche" class="img-responsive">
+	</div>
+
+	<div class="form-group">
+	    <div class="col-sm-offset-4 col-sm-5">
+	      	<select id="cmbColor" class="form-control">
+	      		<!-- <option value="blanco">Blanco</option>
+	      		<option value="negro">Negro</option>
+	      		<option value="rojo">Rojo</option> -->
+	      	</select>
+	    </div>
+	</div>
+	
+</div>
+
+
+
+<script>
+	
+(function(){
+
+	var teslaView={
+
+		loader: $(".divPreloader"),
+		colores: ['blanco','negro','gris'],
+
+		cambioColor: function( img ) {
+
+			var $loader = this.loader;
+			$loader.fadeIn(150);
+
+
+			if( img === undefined){
+				var color = teslaView.colores[0];
+				img = "img/tesla/modelS-"+ color +".jpg";
+				 
+			}
+			//var ahora = new Date();
+			//console.log(ahora);
+			//img = "https://cdn.photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg?d="+ahora;
+
+			$("<img>",{
+				src:img,
+				class:"img-responsive"
+			}).load(function(){
+				//console.log("Imagen cargada");
+				$(".divVistaPrevia").find("img").remove();
+				$(this).appendTo('.divVistaPrevia');
+
+				$loader.fadeOut(150);
+			})},
+		//Funcion pricipal
+		init: function(opciones){
+			$.extend(teslaView,opciones);
+			console.log(teslaView);
+
+			//Ciclo para barrer todo el arreglo de colores y crear nuestro select
+			for(var i=0; i<this.colores.length; i++){
+				var color=this.colores[i];
+				console.log(color);
+				$("<option>",{
+					value:color,
+					text:color,
+				}).appendTo('#cmbColor')
+			}
+
+			$("#cmbColor").bind("change",function(){
+			
+				var color = $(this).val();
+				var url = "img/tesla/modelS-"+ color +".jpg";
+				teslaView.cambioColor(url);
+				//$("#imgCoche").attr("src",url);
+			})
+
+			//Cambiar la imagen al iniciar
+
+			teslaView.cambioColor();
+		}
+
+	};
+	teslaView.init({colores:['gris','azul','negro','cafe','verde']});
+
+	// $("#cmbColor").on("change",function(){
+	// 	var color = $(this).val();
+	// 	var url = "img/tesla/modelS-"+ color +".jpg";
+	// 	$("#imgCoche").attr("src",url);
+	// });
+
+})();
+
+</script>
+
+
+
+
+
+</body>
+</html>
