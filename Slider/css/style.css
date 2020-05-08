@@ -1,0 +1,12 @@
+.slideShow{
+    width: 600px;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.slideShow ul{
+    padding: 0;
+    list-style-type: none;
+    margin-left: 0px;
+    display: flex;
+}
