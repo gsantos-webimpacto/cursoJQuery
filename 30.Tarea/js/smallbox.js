@@ -1,33 +1,28 @@
 (function(){
     $.smallbox = function(opciones){
         opciones = $.extend({
-            titulo:undefined,
-            subtitulo:undefined,
-            contenido:undefined,
-            fa:"fa-envelope-o",
+            color: "green",
+            timeout: 3000,
             img:undefined,
-            timeout: 3000
+            fa:"fa-envelope-o",
+            
         },opciones);
     var html="";
     html += '<div class="smallBox-contenedor">';
-	html += '<div class="smallBox-foto">';
-    html += '	<img src="'+opciones.img+'">';
-	html += '</div>';
+    if(opciones.img!= undefined){
+        html += '<div class="smallBox-foto">';
+        html += '	<img src="'+opciones.img+'">';
+        html += '</div>';
+    }
 	html += '<div class="smallBox-contenido" align="center">';
-	html += '	<div class="smallBox-textoContenedor">';
-	html += '		<span class="smallBox-titulo">'+opciones.titulo+'</span>';
-	html += '		<span class="smallBox-subtitulo">'+opciones.subtitulo+'</span>';
-	html += '	</div>';
-	html += '	<div class="smallBox-pico"></div>';
 	html += '	<div class="smallBox-cajaColor">';
-	html += '		<div class="smallBox-colorTexto">';
-	html +=             opciones.contenido;
-	html += '		</div>';
+	html += '	    <div class="smallBox-textoContenedor">';
+	html += '		    <span class="smallBox-titulo">Guillermo Santos</span>';
+	html += '		    <span class="smallBox-subtitulo">Toledo, ES</span>';
+	html += '	    </div>';
 	html += '		<div class="smallBox-colorIcon">';
 	html += '			<i class="fa '+opciones.fa+' fa-2x"></i>';
 	html += '		</div>';
-	html += '	</div>';
-	html += '	<div class="smallBox-sombra">';
 	html += '	</div>';
 	html += '</div>';
     html += '<div> ';
